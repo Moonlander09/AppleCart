@@ -10,6 +10,8 @@ export async function GET(req) {
     // Get token from cookies
     const token = req.cookies.get("token")?.value;
 
+    
+
     if (!token) {
       return NextResponse.json(
         { status: "fail", message: "Unauthorized" },

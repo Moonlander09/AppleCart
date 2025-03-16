@@ -6,9 +6,6 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { LogInHandler } from "@/lib/axiosHandler";
 
-
-
-
 export default function SigninPage() {
   const [formData, setFormData] = useState({
     email: "",
@@ -16,26 +13,25 @@ export default function SigninPage() {
   });
   const router = useRouter();
 
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const data = await LogInHandler(formData);
-
+     
       // ✅ Success Login - Update user & redirect
       if (data.status === "success") {
         toast.success("Sign In Successfully!");
-   
+
         router.push("/profile");
       }
     } catch (error) {
-      // ✅ Error Handling
       toast.error("Invalid email or password");
+   
     }
   };
 

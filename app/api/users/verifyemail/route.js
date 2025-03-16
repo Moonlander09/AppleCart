@@ -9,6 +9,8 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const token = searchParams.get("token");
 
+
+    
     if (!token) {
       return NextResponse.json(
         { status: "fail", message: "Token is required" },

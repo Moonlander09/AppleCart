@@ -8,23 +8,24 @@ export default function VerifyEmail() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const token = searchParams.get("token");
+  
 
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
 
   const handleVerify = async () => {
-    if (!token) return alert("Invalid token!");
+    if (!token) return toast.error("Invalid token!");
 
     setLoading(true);
     try {
-      await axios.get(`/api/user/verify-email?token=${token}`);
+      const res = await axios.get(`/api/users/verifyemail?token=${token}`);
+      console.log("getting res", res);
       setVerified(true);
 
       setTimeout(() => {
         router.push("/signin"); // Redirect to signin page
       }, 2000);
     } catch (error) {
-      
       toast.error("Verification failed. Try again!");
     } finally {
       setLoading(false);
@@ -46,7 +47,11 @@ export default function VerifyEmail() {
               : "bg-blue-600 hover:bg-blue-700"
           }`}
         >
-          {verified ? "Email Verified" : loading ? "Verifying..." : "Verify Email"}
+          {verified
+            ? "Email Verified"
+            : loading
+            ? "Verifying..."
+            : "Verify Email"}
         </button>
       </div>
     </div>

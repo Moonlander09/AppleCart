@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { forgotPasswordHandler } from "@/lib/axiosHandler";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -13,13 +13,14 @@ export default function ForgotPasswordPage() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("/api/users/forgotpassword", { email });
-      if (res.data.status === "success") {
+      const res = await forgotPasswordHandler(email);
+      if (res.status === "success") {
         toast.success("Link send Successfully!");
         router.push("/signin");
       }
+
+      toast.error(res.message);
     } catch (error) {
-      
       toast.error(error.response.data.message);
     }
   };

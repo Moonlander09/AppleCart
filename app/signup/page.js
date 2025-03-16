@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { signUpHandler } from "@/lib/axiosHandler";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -11,25 +11,29 @@ export default function SignupPage() {
     email: "",
     password: "",
   });
-  const router = useRouter()
+  const router = useRouter();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
 
-      const res = await axios.post('/api/users/signup',formData);
-      
-      if(res.data.status === 'success'){
-        toast.success('Account created Successfully!')
-        router.push('/signin')
-      }
-   } catch(error){
-    toast.error(error.response.data.message)
-   }
+    if (formData.password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return; // Stop execution if password is too short
+    }
+
+    const res = await signUpHandler(formData);
+
+    if (res.status === "success") {
+      toast.success("Account created Successfully!");
+      router.push("/signin");
+    }
+    if (res.status === "fail") {
+      toast.error(res.message);
+    }
   };
 
   return (

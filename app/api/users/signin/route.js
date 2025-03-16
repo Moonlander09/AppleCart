@@ -9,6 +9,8 @@ export async function POST(req) {
     const body = await req.json();
     const userExist = await Users.findOne({ email: body.email });
 
+   
+
     if (!userExist) {
       return NextResponse.json(
         { status: "fail", message: "user does not exist" },
@@ -28,10 +30,14 @@ export async function POST(req) {
     }
     const jwtTokenData = {
       id: userExist._id,
+      isAdmin:userExist.isAdmin
+
     };
     const jwtToken = jwt.sign(jwtTokenData, process.env.TOKEN_SECRET, {
       expiresIn: "10d",
     });
+
+    
 
     const response = NextResponse.json({
       message: "Logged in successfully",
