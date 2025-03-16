@@ -12,7 +12,7 @@ const josefin = Josefin_Sans({
 
 export const metadata = {
   title: "AppleCart – Your One-Stop Shop for Apple Products",
-  description: "AppleCart is your ultimate destination for premium Apple products, offering a seamless shopping experience for iPhones, iPads, MacBooks, Apple Watches, and more. Whether you’re looking for the latest Apple devices or trusted classics, we provide a curated selection with detailed specifications, secure checkout, and fast delivery. Shop with confidence and elevate your tech experience with AppleCart – where innovation meets convenience.",
+  description: "AppleCart is your ultimate destination for premium Apple products, offering a seamless shopping experience for iPhones, iPads, MacBooks, Apple Watches. Whether you’re looking for the latest Apple devices or trusted classics, we provide a curated selection with detailed specifications, secure checkout, and fast delivery. Shop with confidence and elevate your tech experience with AppleCart – where innovation meets convenience.",
 };
 
 export default function RootLayout({ children }) {
