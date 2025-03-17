@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/helper/authContext";
 
 import { Josefin_Sans } from "next/font/google";
+import Footer from "./_components/Footer";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
           </AuthProvider>
+          <Footer/>
         </main>
         <Toaster />
       </body>

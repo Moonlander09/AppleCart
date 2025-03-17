@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "../_components/Footer";
 import { productHandler } from "@/lib/axiosHandler";
 
 export default async function StorePage({ searchParams }) {
@@ -100,7 +99,7 @@ export default async function StorePage({ searchParams }) {
         </Link>
       </div>
 
-      <Footer />
+    
     </div>
   );
 }

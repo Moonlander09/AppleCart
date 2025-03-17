@@ -1,5 +1,5 @@
 import { FaRegCheckCircle, FaShippingFast, FaStore } from "react-icons/fa";
-import Footer from "../_components/Footer";
+
 
 export default function Page() {
     return (<>
@@ -48,7 +48,7 @@ export default function Page() {
           </p>
         </div>
       </div>
-        <Footer/>
+     
         </>
     );
   }

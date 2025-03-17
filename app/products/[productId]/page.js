@@ -1,12 +1,10 @@
 import BuyCartButton from "@/app/_components/BuyCartButton";
-import Footer from "@/app/_components/Footer";
 import { singleProductHandler } from "@/lib/axiosHandler";
 import Image from "next/image";
 
 export default async function ProductPage({ params }) {
   const param = await params;
   const { data } = await singleProductHandler(param.productId);
-
 
   return (
     <>
@@ -82,7 +80,7 @@ export default async function ProductPage({ params }) {
           </div>
         </div>
       </div>
-      <Footer />
+     
     </>
   );
 }

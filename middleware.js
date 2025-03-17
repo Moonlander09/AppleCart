@@ -17,7 +17,7 @@ export async function middleware(req) {
       const secret = new TextEncoder().encode(process.env.TOKEN_SECRET);
       const { payload } = await jwtVerify(token, secret);
       user = payload;
-      console.log('verified user:', user);
+      
     } catch (error) {
       console.error("Invalid Token Error:", error.message);
     }
